@@ -1,17 +1,19 @@
-# Asistente  Calibración de Balanzas
+# Asistente de Calibración de Balanzas
 
 ## Descripción
-Este proyecto desarrolla un asistente de software diseñado para facilitar y mejorar la precisión en el proceso de calibración de balanzas para inspectores de calibración. Se centra en el cálculo preciso de la incertidumbre de medición, siguiendo las directrices de la ISO/IEC 17025:2017, y ofrece un método sistemático para validar y ajustar instrumentos de medición de peso.
+Este proyecto desarrolla un asistente de software diseñado para facilitar y mejorar la precisión en el proceso de calibración de balanzas para inspectores de calibración. Utilizando Streamlit, se crea una interfaz de usuario amigable que permite a los usuarios interactuar de manera eficiente con las funcionalidades del sistema. Se centra en el cálculo preciso de la incertidumbre de medición, siguiendo las directrices de la ISO/IEC 17025:2017, y ofrece un método sistemático para validar y ajustar instrumentos de medición de peso.
 
 ## Características Principales
 
+- **Interfaz Gráfica de Usuario con Streamlit:** Proporciona una experiencia de usuario interactiva y amigable para la navegación y entrada de datos, mejorando significativamente la accesibilidad del asistente.
+  
 - **Extracción y análisis de datos:** Procesamiento de datos de calibración desde archivos JSON, interpretando y analizando la incertidumbre de medición ('Meas Uncert') y el CMC (Capacidad de Medición y Calibración).
 
 - **Cálculo de incertidumbre de medición:** Implementación de algoritmos avanzados para calcular la incertidumbre asociada a las mediciones de las balanzas, siguiendo las directrices de la ISO.
 
 - **Conversión y normalización de unidades:** Capacidad para convertir y normalizar diversas unidades de medida a un estándar común, garantizando precisión y consistencia.
 
-- **Adaptabilidad y escalabilidad:** Diseño flexible para adaptarse a diferentes tipos y rangos de balanzas, permitiendo su uso en variados contextos industriales.
+- **Adaptabilidad y escalabilidad:** Diseño flexible para adaptarse a diferentes tipos y rangos de balanzas.
 
 ## Preparación
 
@@ -24,14 +26,13 @@ Identificar y comprender los datos clave para el cálculo de la incertidumbre, i
 Organización y acceso a datos en archivos JSON (`SampleCals.json` y `CertificadoBalance.json`) que contienen información relevante sobre las balanzas y sus incertidumbres asociadas.
 
 ### Conversión de Unidades
-Métodos para convertir unidades a un estándar común (gramos), dada la variabilidad de unidades en la incertidumbre y las mediciones.
+Métodos para convertir unidades a un estándar común (gramos), dada la variabilidad de unidades (kg,g,lb) en la incertidumbre y las mediciones.
 
 ### Descomposición del CMC
 Comprensión y descomposición del CMC en componentes fijos y proporcionales al valor nominal.
 
 ### Suma Cuadrática para Incertidumbre Total
-Cálculo de la incertidumbre total mediante la suma cuadrática de 'Meas Uncert', CMC fijo, CMC proporcional, y otras fuentes de incertidumbre.
-
+Cálculo de la incertidumbre total mediante la suma cuadrática de 'Meas Uncert', CMC fijo, CMC proporcional.
 ## Funciones Principales del Código
 
 ### `cargar_json(filename)`
@@ -47,11 +48,17 @@ Permite al usuario seleccionar un modelo de equipo de una lista basada en los da
 Convierte valores entre diferentes unidades de medida a gramos, utilizando un método que garantiza la precisión y consistencia en las conversiones.
 
 ### `calcular_incertidumbre(valor_nominal, cmc_fijo, cmc_proporcional, meas_uncert)`
-Calcula la incertidumbre total de una medición combinando los componentes de incertidumbre 'Meas Uncert', el CMC fijo, el CMC proporcional, y cualquier otra fuente de incertidumbre relevante.
+Calcula la incertidumbre total de una medición combinando los componentes de incertidumbre 'Meas Uncert', el CMC fijo, el CMC proporcional.
 
-## Implementación
+## Implementación en Streamlit
 
-El desarrollo de este asistente automatizado se centra en la creación de un conjunto cohesivo de herramientas y funciones que se integran para formar un flujo de trabajo eficiente para la calibración de balanzas. Cada componente ha sido diseñado para ser modular, permitiendo su adaptación o extensión según sea necesario para acomodar nuevos tipos de balanzas o requisitos de calibración.
+Para implementar este asistente en Streamlit y crear una interfaz interactiva, se sigue el siguiente flujo de trabajo:
+
+1. **Ejecutar Streamlit**: Primero, se debe ejecutar `app.py` con Streamlit usando el comando `streamlit run app.py` en la terminal. Esto inicializa la aplicación y abre la interfaz de usuario en el navegador web.
+
+2. **Interacción con la Interfaz**: La interfaz de Streamlit guía al usuario a través del proceso de calibración, permitiendo la entrada de datos y la selección de opciones a través de widgets interactivos.
+
+3. **Visualización de Resultados**: Una vez ingresados los datos y realizados los cálculos, Streamlit muestra los resultados de la incertidumbre de medición y el CMC utilizado.
 
 ## Uso del Asistente
 
